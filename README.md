@@ -23,7 +23,7 @@ A K-Means implementation is also available (SLIC class inherits from KMeans).
 
 ``` Python
 
-from kmeans import *
+from slic import *
 
 # 1. Instatiate SLIC object 
 sl = SLIC()
@@ -44,7 +44,7 @@ plt.imshow(clr_mask); plt.show()
 
 ``` Python
 
-from kmeans import *
+from slic import *
 
 
 # SLIC EXAMPLE
