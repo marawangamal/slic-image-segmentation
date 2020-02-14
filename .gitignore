@@ -1,1 +1,9 @@
 .ds_store
+images/
+labels/
+data/
+models*
+main*
+dataloading*
+preprocessing*
+prepocessing*
