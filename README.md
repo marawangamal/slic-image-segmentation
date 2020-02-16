@@ -28,7 +28,7 @@ from slic import *
 sl = SLIC()
 
 # 2. Obtain cluster centers and assignments as an integer mask
-mus, sets, = sl.get_superpixels(img_CIElab, k=100, iters=5)
+mus, sets, = sl.run(img_CIElab, k=100, iters=5)
 
 # 3. Obtain a colour mask (i.e. each pixel is given the colour cluster center it's assigned to)
 clr_mask = sl.get_color_mask(mus, sets) 
