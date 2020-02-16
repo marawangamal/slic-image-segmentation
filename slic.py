@@ -70,15 +70,15 @@ class KMeans:
         """
 
 
-        start = timeit.default_timer()
+        # start = timeit.default_timer()
         dists = self.compute_dists(imgvol, mus) # [rows, cols, K]
-        stop = timeit.default_timer()
-        t1 = stop - start
-        start = timeit.default_timer()
-        dists2 = self.compute_dists_vectorised(imgvol, mus) # [rows, cols, K]
-        stop = timeit.default_timer()
-        t2 = stop-start
-        print(t1, t2)
+        # stop = timeit.default_timer()
+        # t1 = stop - start
+        # start = timeit.default_timer()
+        # dists2 = self.compute_dists_vectorised(imgvol, mus) # [rows, cols, K]
+        # stop = timeit.default_timer()
+        # t2 = stop-start
+        # print(t1, t2)
 
 
         mask = np.argmin(dists, axis = -1)
@@ -191,12 +191,10 @@ class KMeans:
             clr_mask_with_boundaries = cv2.circle(clr_mask_with_boundaries, center=(x, y), radius=1, color=(0,0,0) , thickness=2)
 
 
-        plt.imshow(clr_mask_with_boundaries); plt.show()
-
         return clr_mask_with_boundaries
 
     def res_error(self, mus1, mus2):
-        """ Calculates residual error, i.e. E = ||mu1 - mu2||
+        """ Calculates mean residual error, i.e. E = ||mu1 - mu2|| / |mu1|
         Args:
             mus1: (np.array) previous cluster centers, Shape: [K, D=5]
             mus2: (np.array) new cluster centers, Shape: [K, D=5]
@@ -205,7 +203,7 @@ class KMeans:
         """
         error = np.sum(np.linalg.norm(mus1 - mus2, axis=-1))
 
-        return error
+        return error/len(mus1)
 
     def run(self, img, k, iters=10):
         """ Runs K-Means.
@@ -526,7 +524,7 @@ class SLIC(KMeans):
         return img_gray
 
     def remove_strays(self, sets):
-            """ Relabels stray pixels
+            """ Relabels stray pixels - Not completed
             """
 
             import pdb; pdb.set_trace()
@@ -596,7 +594,7 @@ class SLIC(KMeans):
             error = self.res_error(np.copy(old_mus), np.copy(mus))
             print("iter: {} Error: {}".format(i, error))
 
-            if(error/len(mus) < 5):
+            if(error < 3):
                 break
 
         return mus, sets
