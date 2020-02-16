@@ -10,12 +10,11 @@ A K-Means implementation is also available (SLIC class inherits from KMeans).
 
 **Parameters:** m = 20, K =100
 
-<table style="width:100%">
+<table style="width:70%">
   <tr>
   <img src="https://github.com/mgamal96/Segmenation/blob/master/imgs/bear_superpixels.png?raw=true" alt="Paris" class="center">
   </tr>
 </table>
-
 
 ## Usage
 
