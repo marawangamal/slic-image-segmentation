@@ -1,9 +1,11 @@
 ## Project Description
 
-SLIC - *Simple Linear Iterative Clustering* python implementation to obtain **Super-Pixels**. 
-Paper: http://www.kev-smith.com/papers/SLIC_Superpixels.pdf
+Segmentation using SLIC to obtain super-pixels, VGG16-FCN to obtain a pixel-wise prediction and Loopy Belief Propagation to perform inference in a Conditional Random Field that encourages smoothness in labelling.
 
-A K-Means implementation is also available (SLIC class inherits from KMeans).
+SLIC - *Simple Linear Iterative Clustering* python implementation to obtain **Super-Pixels**. 
+Paper: http://www.kev-smith.com/papers/SLIC_Superpixels.pdf (A K-Means implementation is also available as SLIC class inherits from KMeans). 
+
+Loopy Belief Propagation - Inference algorithm to find optimal labelling in a factor graph.
 
 
 ## Example output
@@ -15,6 +17,13 @@ A K-Means implementation is also available (SLIC class inherits from KMeans).
   <img src="https://github.com/mgamal96/Segmenation/blob/master/imgs/bear_superpixels.png?raw=true" alt="Paris" class="center">
   </tr>
 </table>
+
+## Code Description
+ 
+ * slic.py
+    * Contains SLIC and K-Means algorithms
+ * max_sum.py
+    * Contains graph building routine and max-sum algorithm
 
 ## Usage
 
